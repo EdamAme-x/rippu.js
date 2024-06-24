@@ -1,5 +1,5 @@
 # rippu.js
-Library for building TUI in JSX 💄
+Library for building Terminal UI in JSX 💄
 
 Rippu - [リップ] means lip-gloss💄 in Japanese.
 
