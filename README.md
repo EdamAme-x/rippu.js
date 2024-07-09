@@ -12,7 +12,7 @@ Supports: Node.js, Deno, Bun and more :heart:
 ### Counter
 
 ```tsx
-import { useState, useEffect } from "rippu";
+import { useState, useEffect } from "@rippu/hooks";
 
 export function Counter() {
   const [count, setCount] = useState(1);
