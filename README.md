@@ -15,7 +15,7 @@ Supports: Node.js, Deno, Bun and all :heart:
 import { useState, useEffect } from "rippu";
 
 export function Counter() {
-  const [count, setCount] = useState(0);
+  const [count, setCount] = useState(1);
 
   useEffect(() => {
     const intervalId = setInterval(() => setCount(count + 1), 1000);
@@ -23,7 +23,7 @@ export function Counter() {
   }, [])
 
   return <>
-    <p>Count: <b>{count} {count <= 1 ? "click" : "clicks"}</b></p>
+    <p>Count: <b>{count} {count === 1 ? "click" : "clicks"}</b></p>
   </>
 }
 ```
