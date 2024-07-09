@@ -28,5 +28,9 @@ export function Counter() {
 }
 ```
 
+### Image
+![image](https://github.com/EdamAme-x/rippu.js/assets/121654029/27076ab8-e098-4d8a-999d-bc97fc3d9a92)
+
+
 ## Image
 <img src="https://raw.githubusercontent.com/Yomguithereal/react-blessed/master/img/demo.gif" alt="this is mock image" />
