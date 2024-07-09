@@ -5,7 +5,7 @@ Rippu - [リップ] means lip-gloss💄 in Japanese.
 
 Fast, feature-rich, user-friendly, and above all, upscale UI ✨
 
-Supports: Node.js, Deno, Bun and all :heart:
+Supports: Node.js, Deno, Bun and more :heart:
 
 ## Examples
 
