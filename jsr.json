@@ -1,0 +1,11 @@
+{
+  "$schema": "https://jsr.io/schema/config-file.v1.json",
+  "name": "@rippu/x",
+  "version": "0.0.0",
+  "exports": {
+    "./create-rippu": "./packages/create-rippu/index.ts",
+    ".": "./packages/jsx/index.ts",
+    "./jsx": "./packages/jsx/index.ts",
+    "./hooks": "./packages/hooks/index.ts"
+  }
+}
