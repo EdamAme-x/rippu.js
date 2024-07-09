@@ -12,9 +12,10 @@ Supports: Node.js, Deno, Bun and more :heart:
 ### Counter
 
 ```tsx
-import { useState, useEffect } from "@rippu/hooks";
+import { useState, useEffect } from "react";
+import { render } from "@rippu/x/jsx";
 
-export function Counter() {
+function Counter() {
   const [count, setCount] = useState(1);
 
   useEffect(() => {
@@ -26,6 +27,8 @@ export function Counter() {
     <p>Count: <b>{count} {count === 1 ? "click" : "clicks"}</b></p>
   </>
 }
+
+render(Counter)
 ```
 
 ### Image
