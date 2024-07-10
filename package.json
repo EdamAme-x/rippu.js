@@ -1,16 +1,43 @@
 {
-  "name": "rippu.js",
-  "module": "cli/index.ts",
+  "name": "rippu",
+  "description": "Components for building Beautiful TUI in Ink.js 💄",
+  "license": "MIT",
+  "keywords": [
+    "ink.js",
+    "ink",
+    "tui",
+    "react",
+    "rippu",
+    "lipgloss",
+    "rippu.js",
+    "rippu-js"
+  ],
+  "module": "./dist/index.js",
   "type": "module",
+  "scripts": {
+    "build": "rimraf dist && bun ./build.ts"
+  },
+  "author": {
+    "name": "Ame_x",
+    "url": "https://github.com/EdamAme-x",
+    "email": "admin@ame-x.net"
+  },
+  "bugs": {
+    "url": "https://github.com/EdamAme-x/rippu.js/issues"
+  },
+  "bin": "./dist/cli.js",
   "devDependencies": {
-    "@types/bun": "latest"
+    "@types/bun": "latest",
+    "@types/ink": "^2.0.3",
+    "@types/react": "^18.3.3",
+    "esbuild": "^0.23.0",
+    "rimraf": "^6.0.0",
+    "tsc": "^2.0.4"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
   },
   "dependencies": {
-    "@types/ink": "^2.0.3",
-    "@types/react": "^18.3.3",
     "ink": "^5.0.1",
     "react": "^18.3.1"
   }
