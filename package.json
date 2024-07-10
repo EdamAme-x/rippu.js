@@ -1,5 +1,6 @@
 {
   "name": "rippu.js",
+  "module": "cli/index.ts",
   "type": "module",
   "devDependencies": {
     "@types/bun": "latest"
@@ -8,7 +9,9 @@
     "typescript": "^5.0.0"
   },
   "dependencies": {
+    "@types/ink": "^2.0.3",
     "@types/react": "^18.3.3",
+    "ink": "^5.0.1",
     "react": "^18.3.1"
   }
 }
