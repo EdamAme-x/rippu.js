@@ -49,5 +49,7 @@ function Counter() {
 console.log(renderToString(Counter))
 ```
 
-## Image
-<img src="https://raw.githubusercontent.com/Yomguithereal/react-blessed/master/img/demo.gif" alt="this is mock image" />
+## Authors
+- Ame_x [@amex2189](https://x.com/amex2189)
+
+Thanks lipgloss-go
