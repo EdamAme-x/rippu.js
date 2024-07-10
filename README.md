@@ -1,7 +1,7 @@
 # rippu.js
 Library for building TUI in JSX 💄
 
-## Attention: Develop now!
+## Attention: Developing now!
 
 Rippu - [リップ] means lip-gloss💄 in Japanese.
 
