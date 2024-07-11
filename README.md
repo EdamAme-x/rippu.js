@@ -17,6 +17,14 @@ You are free to customize your design!
 
 ## Examples
 
+## For Contributors
+
+Please run before pushing.
+
+```bash
+bun run format:fix
+```
+
 ## Authors
 - Ame_x [@amex2189](https://x.com/amex2189)
 
