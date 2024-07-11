@@ -1,20 +1,20 @@
 import { Box, render, Text } from "ink";
 
-import helpBoard from "./help";
-import UnknownBoard from "./unknown";
+import helpCommand from "./commands/help";
+import UnknownCommand from "./commands/unknown";
 
 const args = process.argv.slice(2);
 
 const [command, ...params] = args;
 
 switch (command) {
-	case "build":
+	case "add":
 		break;
 	case "help":
-		render(helpBoard({ command, params }));
+		render(helpCommand({ command, params }));
 		break;
 	default:
-		render(UnknownBoard({ command, params }));
+		render(UnknownCommand({ command, params }));
 		break;
 }
 

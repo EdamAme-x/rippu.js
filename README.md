@@ -14,8 +14,24 @@ Accessible and customizable components that you can copy and paste into your app
 
 This is a set of components available in ink.js. Rich selection screens, progress bars, loading, and still growing.   
 You are free to customize your design!
+like a shadcn-ui
 
-## Examples
+## How to use
+No config.
+
+```bash
+npx rippu add loading
+pnpx rippu add loading
+bunx rippu add loading
+deno run -Ar npm:rippu add loading
+```
+
+OR
+
+```bash
+~ rippu add loading ./loading.tsx
+~ rippu add loading ./loading.jsx
+```
 
 ## For Contributors
 
