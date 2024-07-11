@@ -10,7 +10,7 @@ Supports: Node.js, Deno, Bun and more :heart:
 Accessible and customizable components that you can copy and paste into your apps. Free. Open Source.  
 **Use this to build your own component library.**
 
-## WHAT IS THIS
+## What is this
 
 This is a set of components available in ink.js. Rich selection screens, progress bars, loading, and still growing.   
 You are free to customize your design!
