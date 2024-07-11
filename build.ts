@@ -16,4 +16,5 @@ await build({
   sourcemap: true,
   allowOverwrite: true,
   format: "esm",
+  packages: "bundle"
 });

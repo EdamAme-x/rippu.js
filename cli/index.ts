@@ -1,8 +1,24 @@
-import { a } from "./a";
+import yargs from "yargs";
+import { hideBin } from "yargs/helpers";
 
-console.log("Rippu - [リップ] means lip-gloss💄 in Japanese.");
-for (let i = 0; i < 24; i++) {
-    console.log(i);
-}
-console.log("Fast, feature-rich, user-friendly, and above all, upscale UI ✨");
-console.log("Supports: Node.js, Deno, Bun and more :heart: and ", a);
+
+yargs(hideBin(process.argv))
+  .command(
+    "serve [port]",
+    "start the server",
+    (yargs) => {
+      return yargs.positional("port", {
+        describe: "port to bind on",
+        default: 5000,
+      });
+    },
+    (argv) => {
+      if (argv.verbose) console.info(`start server on :${argv.port}`);
+    }
+  )
+  .option("verbose", {
+    alias: "v",
+    type: "boolean",
+    description: "Run with verbose logging",
+  })
+  .parse();
