@@ -83,7 +83,7 @@ const PrefetchCommand = (props: { command: string; params: string[] }) => {
 			) : (
 				<Logger type="error" message={component.error ?? "Unknown error"} />
 			)}
-			<Newline count={1} />
+            <Text>{" "}</Text>
 			<Text color={"blue"} bold>
 				Press {gray("Ctrl+C")} key to exit
 			</Text>
