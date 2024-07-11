@@ -9,7 +9,7 @@ export async function fetchComponent(componentName: string) {
 		return {
 			ok: false,
 			error: response.statusText,
-            data: null
+			data: null
 		};
 	}
 
@@ -19,11 +19,13 @@ export async function fetchComponent(componentName: string) {
 
 	return {
 		ok: true,
-        error: null,
+		error: null,
 		data: {
 			title,
 			description,
-			source
+			source,
+			componentName,
+			componentUrl
 		}
 	};
 }
