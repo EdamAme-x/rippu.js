@@ -11,6 +11,15 @@ const logMap = {
 
 const maxLogLevelLength = Object.keys(logMap).reduce((max, type) => Math.max(max, type.length), 0);
 
+/**
+ * Renders a log message with specified type, message, color, and newline settings.
+ *
+ * @param {keyof typeof logMap} type - The type of the log message.
+ * @param {string | JSX.Element} message - The content of the log message.
+ * @param {string} [color="default"] - The color of the log message.
+ * @param {boolean} [newline=false] - Whether to add a newline after the log message.
+ * @return {JSX.Element} The formatted log message JSX element.
+ */
 export default function Logger({
 	type,
 	message,

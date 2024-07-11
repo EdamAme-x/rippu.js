@@ -35,7 +35,7 @@ OR
 
 ## For Contributors
 
-Please run before pushing.
+Please run before pushing, and add jsdoc (optional).
 
 ```bash
 bun run format:fix

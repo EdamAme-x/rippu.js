@@ -13,6 +13,14 @@ const variantTexts = {
 	point: ["⠙", "⠘", "⠰", "⠴", "⠤", "⠦", "⠆", "⠃", "⠋", "⠉"]
 } as const satisfies Record<string, string[]>;
 
+/**
+ * Renders a loading component with varying text styles based on the specified variant.
+ *
+ * @param {keyof typeof variantTexts} variant - The style variant for the loading component.
+ * @param {boolean} stop - A flag to stop the loading animation.
+ * @param {number} interval - The interval for changing the text in the loading animation.
+ * @return {JSX.Element} The loading component with styled text.
+ */
 export function Loading({
 	variant = "point",
 	stop = false,

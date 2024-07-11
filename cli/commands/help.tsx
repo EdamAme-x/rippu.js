@@ -22,7 +22,7 @@ const commandMap = {
 	}
 >;
 
-const helpCommand = (_props: { command: string; params: string[] }) => (
+const HelpCommand = (_props: { command: string; params: string[] }) => (
 	<Box flexDirection="column">
 		<Box flexDirection="column" alignItems="flex-start">
 			<Logger type="info" message={"Help"} />
@@ -55,4 +55,4 @@ const helpCommand = (_props: { command: string; params: string[] }) => (
 	</Box>
 );
 
-export default helpCommand;
+export default HelpCommand;
