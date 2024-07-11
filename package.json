@@ -2,6 +2,10 @@
   "name": "rippu",
   "description": "Components for building Beautiful TUI in Ink.js 💄",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/EdamAme-x/rippu.js.git"
+  },
   "keywords": [
     "ink.js",
     "ink",
