@@ -37,6 +37,8 @@ OR
 
 Please run before pushing, and add jsdoc (optional).
 
+See [loading.tsx](components/loading.tsx)
+
 ```bash
 bun run format:fix
 ```

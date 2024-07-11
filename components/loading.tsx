@@ -46,3 +46,5 @@ export function Loading({
 
 	return <Text>{variantTexts[variant][poiter]}</Text>;
 }
+
+// #rippu:Loading:A Loader Animation Text Component

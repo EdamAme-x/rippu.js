@@ -51,3 +51,5 @@ export default function Logger({
 		</>
 	);
 }
+
+// #rippu:Logger:A Log Message Component

@@ -1,6 +1,6 @@
 import { Box, Newline, Text } from "ink";
 
-import Logger from "../../components/logger";
+import Logger from "../../../components/logger";
 
 const UnknownCommand = (props: { command: string; params: string[] }) => (
 	<Box flexDirection="column">
