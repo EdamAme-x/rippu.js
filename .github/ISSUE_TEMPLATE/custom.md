@@ -1,10 +1,11 @@
 ---
 name: Blank
-about: others
+about: For others
 title: ''
 labels: ''
 assignees: ''
 
 ---
 
+**About**
 
