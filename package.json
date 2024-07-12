@@ -36,7 +36,7 @@
   "repository": {
     "url": "https://github.com/EdamAme-x/rippu.js"
   },
-  "bin": "./dist/index.js",
+  "bin": "./index.js",
   "devDependencies": {
     "@hono/eslint-config": "^0.0.6",
     "@ianvs/prettier-plugin-sort-imports": "^4.3.0",
