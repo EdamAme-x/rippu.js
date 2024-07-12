@@ -39,10 +39,10 @@ function Build() {
 					'react-devtools-core': 'react-devtools-core',
 				},
 			})
-			setIsSuccess(true)
 			setTimeout(() => {
 				process.exit()
 			}, 1000)
+			setIsSuccess(true)
 		})()
 	}, [])
 
