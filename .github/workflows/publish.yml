@@ -7,7 +7,7 @@ on:
 
 jobs:
   publish:
-    name: publish
+    name: setup Publish
     runs-on: ${{ matrix.os }}
     timeout-minutes: 10
     strategy:
