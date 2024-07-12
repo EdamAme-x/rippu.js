@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { gray, blue, red, green, magenta, white } from 'enogu'
+import { blue, gray, green, magenta, red, white } from 'enogu'
 import { Box, Newline, Text } from 'ink'
 
 import { Loading } from '../../../components/loading'
@@ -57,21 +57,41 @@ const PrefetchCommand = (props: { command: string; params: string[] }) => {
 					<Text bold color='green'>
 						<Loading variant='point' stop={isStop} /> Prefetched "{componentName}"
 					</Text>
-					<Text>{" "}</Text>
+					<Text> </Text>
 					{component.data ? (
 						Object.entries(component.data).map(([key, value]) => {
 							const keys = key as keyof typeof component.data
 							switch (keys) {
 								case 'componentName':
-									return <Text color="gray" key={key}>Component Name: {blue(value)}</Text>
+									return (
+										<Text color='gray' key={key}>
+											Component Name: {blue(value)}
+										</Text>
+									)
 								case 'componentUrl':
-									return <Text color="gray" key={key}>Component Raw URL: {magenta(value)}</Text>
+									return (
+										<Text color='gray' key={key}>
+											Component Raw URL: {magenta(value)}
+										</Text>
+									)
 								case 'title':
-									return <Text color="gray" key={key}>Title: {green(value)}</Text>
+									return (
+										<Text color='gray' key={key}>
+											Title: {green(value)}
+										</Text>
+									)
 								case 'description':
-									return <Text color="gray" key={key}>Description: {red(value)}</Text>
+									return (
+										<Text color='gray' key={key}>
+											Description: {red(value)}
+										</Text>
+									)
 								case 'source':
-									return <Text color="gray" key={key}>Hash: {white(simpleHash(value))}</Text>
+									return (
+										<Text color='gray' key={key}>
+											Hash: {white(simpleHash(value))}
+										</Text>
+									)
 							}
 						})
 					) : (
@@ -86,9 +106,11 @@ const PrefetchCommand = (props: { command: string; params: string[] }) => {
 				<Logger type='error' message={component.error ?? 'Unknown error'} />
 			)}
 			<Text> </Text>
-			<Text color={'blue'} bold>
-				Press {gray('Ctrl+C')} key to exit
-			</Text>
+			{!component.ok && (
+				<Text color={'white'} bold>
+					Press {gray('Ctrl+C')} key to exit
+				</Text>
+			)}
 		</Box>
 	)
 }
