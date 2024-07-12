@@ -30,7 +30,7 @@ jobs:
           registry-url: 'https://registry.npmjs.org'
 
       - name: Install dependencies 🧹
-        run: npm i 
+        run: npm i --legacy-peer-deps
         # using bun
 
       - name: Build 🔨
