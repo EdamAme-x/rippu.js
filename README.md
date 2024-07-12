@@ -19,7 +19,12 @@ You are free to customize your design!
 like a shadcn-ui
 
 ## How to use
-No config.
+See [**Docs 📖**](https://github.com/EdamAme-x/rippu.js/wiki)
+
+### Image
+<img src="https://raw.githubusercontent.com/Yomguithereal/react-blessed/master/img/demo.gif" alt="demo"/>
+
+If you alredy use ink
 
 ```bash
 npx rippu add loading
