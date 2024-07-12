@@ -17,10 +17,12 @@
   "scripts": {
     "build:start": "rimraf dist",
     "build:middle": "bun run ./build.ts",
-    "build:end": "cp ./package.json ./dist/package.json && cp ./README.md ./dist/README.md",
+    "build:end": "cp ./package.json ./dist/package.json && cp ./README.md ./dist/README.md && cp ./node_modules/yoga-wasm-web/dist/yoga.wasm ./dist/yoga.wasm",
     "build": "bun run build:start && bun run build:middle  && bun run build:end",
-    "format": "prettier --check '**/*.{ts,tsx,js,jsx,json}'",
-    "format:fix": "prettier --write '**/*.{ts,tsx,js,jsx}'"
+    "format": "prettier --check '**/*.{ts,tsx,js,jsx}'",
+    "format:fix": "prettier --write '**/*.{ts,tsx,js,jsx}'",
+    "lint": "eslint --ext js,ts,jsx,tsx cli components",
+    "lint:fix": "eslint --ext js,ts,jsx,tsx cli components --fix"
   },
   "author": {
     "name": "Ame_x",
@@ -32,15 +34,20 @@
   },
   "bin": "./dist/cli.js",
   "devDependencies": {
+    "@hono/eslint-config": "^0.0.6",
     "@ianvs/prettier-plugin-sort-imports": "^4.3.0",
     "@types/bun": "latest",
     "@types/ink": "^2.0.3",
     "@types/react": "^18.3.3",
     "cp": "^0.2.0",
     "esbuild": "^0.23.0",
+    "eslint": "^8.55.0",
+    "eslint-plugin-unused-imports": "^4.0.0",
     "prettier": "^3.3.2",
+    "react-devtools-core": "^5.3.1",
     "rimraf": "^6.0.0",
-    "tsc": "^2.0.4"
+    "tsc": "^2.0.4",
+    "yoga-wasm-web": "^0.3.3"
   },
   "peerDependencies": {
     "typescript": "^5.0.0"
@@ -48,7 +55,6 @@
   "dependencies": {
     "enogu": "^0.4.1",
     "ink": "^5.0.1",
-    "react": "^18.3.1",
-    "react-devtools-core": "^5.3.1"
+    "react": "^18.3.1"
   }
 }
