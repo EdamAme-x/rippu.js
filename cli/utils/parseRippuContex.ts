@@ -9,7 +9,6 @@ export function parseRippuContext(source: string): {
 	for (const line of source.split('\n')) {
 		if (line.startsWith('// #rippu:') || line.startsWith('//#rippu:')) {
 			const [_, title, description, deps] = line.split(':')
-
 			return {
 				title: title.trim(),
 				description: description.trim(),
