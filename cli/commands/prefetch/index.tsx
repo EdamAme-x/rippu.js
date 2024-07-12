@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
 import { blue, gray, green, magenta, red, white, yellow } from 'enogu'
-import { Box, Newline, Text } from 'ink'
+import { Box, Text } from 'ink'
 
 import { Loading } from '../../../components/loading'
 import Logger from '../../../components/logger'
@@ -19,18 +19,15 @@ const PrefetchCommand = (props: { command: string; params: string[] }) => {
 
 	const [isStop, setIsStop] = useState<boolean>(false)
 	// FIXME
-	const [component, setComponent] = useState<Awaited<ReturnType<typeof fetchComponent>>>({
-		ok: false,
-		error: 'Loading',
-		data: null,
-	})
+	const [component, setComponent] = useState<Awaited<ReturnType<typeof fetchComponent>>>([false,
+		null, "Loading"])
 
 	useEffect(() => {
 		;(async () => {
 			const data = await fetchComponent(componentName)
 
 			setTimeout(() => {
-				process.exit(data.ok ? 0 : 1)
+				process.exit(data[0] ? 0 : 1)
 			}, 100)
 
 			setComponent(data)
@@ -38,11 +35,11 @@ const PrefetchCommand = (props: { command: string; params: string[] }) => {
 	}, [])
 
 	useEffect(() => {
-		if (component.ok) {
+		if (component[0]) {
 			setIsStop(true)
 		} else {
-			if (component.error) {
-				if (component.error === 'Loading') {
+			if (component[2]) {
+				if (component[2] === 'Loading') {
 					setIsStop(false)
 				} else {
 					setIsStop(true)
@@ -53,15 +50,15 @@ const PrefetchCommand = (props: { command: string; params: string[] }) => {
 
 	return (
 		<Box flexDirection='column'>
-			{component.ok ? (
+			{component[0] ? (
 				<Box flexDirection='column'>
 					<Text bold color='green'>
 						<Loading variant='point' stop={isStop} /> Prefetched "{componentName}"
 					</Text>
 					<Text> </Text>
-					{component.data ? (
-						Object.entries(component.data).map(([key, value]) => {
-							const keys = key as keyof typeof component.data
+					{component[1] ? (
+						Object.entries(component[1]).map(([key, value]) => {
+							const keys = key as keyof typeof component[1]
 							switch (keys) {
 								case 'componentName':
 									return (
@@ -105,15 +102,15 @@ const PrefetchCommand = (props: { command: string; params: string[] }) => {
 						<Logger type='error' message='Unknown error' />
 					)}
 				</Box>
-			) : component.error === 'Loading' ? (
+			) : component[2] === 'Loading' ? (
 				<Text bold color='red'>
 					<Loading variant='point' stop={isStop} /> Prefetching...
 				</Text>
 			) : (
-				<Logger type='error' message={component.error ?? 'Unknown error'} />
+				<Logger type='error' message={component[2] ?? 'Unknown error'} />
 			)}
 			<Text> </Text>
-			{!component.ok && (
+			{!component[0] && (
 				<Text color={'white'} bold>
 					Press {gray('Ctrl+C')} key to exit
 				</Text>

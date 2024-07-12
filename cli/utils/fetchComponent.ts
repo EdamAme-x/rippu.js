@@ -1,6 +1,14 @@
+import type { Result } from '../types'
 import { parseRippuContext } from './parseRippuContex'
 
-export async function fetchComponent(componentName: string) {
+export async function fetchComponent(componentName: string): Promise<Result<{
+	title: string,
+	description: string,
+	deps: string,
+	source: string,
+	componentName: string,
+	componentUrl: string,
+}, string>> {
 	const componentUrl = `https://raw.githubusercontent.com/EdamAme-x/rippu.js/main/components/${componentName}.tsx`
 
 	const response = await fetch(componentUrl, {
@@ -12,27 +20,19 @@ export async function fetchComponent(componentName: string) {
 	})
 
 	if (!response.ok) {
-		return {
-			ok: false,
-			error: response.statusText,
-			data: null,
-		}
+		return [false, null, response.statusText] 
 	}
 
 	const source = await response.text()
 
 	const { title, description, deps } = parseRippuContext(source)
 
-	return {
-		ok: true,
-		error: null,
-		data: {
-			title,
-			description,
-			deps,
-			source,
-			componentName,
-			componentUrl,
-		},
-	}
+	return [true, {
+		title,
+		description,
+		deps,
+		source,
+		componentName,
+		componentUrl,
+	}, null] 
 }

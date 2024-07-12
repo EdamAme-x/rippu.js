@@ -39,16 +39,20 @@ const AddCommand = (props: { command: string; params: string[] }) => {
 		;(async () => {
 			const component = await fetchComponent(componentName)
 
-			if (component.ok) {
+			if (component[0]) {
 				try {
-					await fs.appendFile(putPath, component.data?.source!)
+					if (component[1]) {
+						await fs.appendFile(putPath, component[1].source)
+					}else {
+						throw new Error()
+					}
 				} catch (_e) {
 					console.error('Already file exist or no dir.')
 					process.exit(1)
 				}
 				setAddContainer({
 					status: 'complete',
-					data: component.data,
+					data: component[1],
 				})
 				setTimeout(() => {
 					process.exit(1)
@@ -56,7 +60,7 @@ const AddCommand = (props: { command: string; params: string[] }) => {
 			} else {
 				setAddContainer({
 					status: 'error',
-					data: component.error,
+					data: component[2],
 				})
 				setTimeout(() => {
 					process.exit(1)
