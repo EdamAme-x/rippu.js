@@ -3,61 +3,61 @@
   Copyright (c) 2024 amex2189
 */
 
-import path from "node:path";
-import { useEffect, useState } from "react";
-import { build } from "esbuild";
-import { render, Text } from "ink";
+import path from 'node:path'
+import { useEffect, useState } from 'react'
+import { build } from 'esbuild'
+import { render, Text } from 'ink'
 
-import { Loading } from "./components/loading";
-import Logger from "./components/logger";
+import { Loading } from './components/loading'
+import Logger from './components/logger'
 
-render(<Build />);
+render(<Build />)
 
 function Build() {
-	const [isSuccess, setIsSuccess] = useState(false);
+	const [isSuccess, setIsSuccess] = useState(false)
 
 	useEffect(() => {
-		(async () => {
+		;(async () => {
 			await build({
-				legalComments: "none",
-				entryPoints: ["./cli/index.tsx"],
-				outfile: path.resolve("./dist/index.js"),
+				legalComments: 'none',
+				entryPoints: ['./cli/index.tsx'],
+				outfile: path.resolve('./dist/index.js'),
 				loader: {
-					".js": "jsx",
-					".ts": "ts",
-					".tsx": "tsx",
-					".json": "json"
+					'.js': 'jsx',
+					'.ts': 'ts',
+					'.tsx': 'tsx',
+					'.json': 'json',
 				},
 				bundle: true,
-				platform: "node",
-				target: "esnext",
+				platform: 'node',
+				target: 'esnext',
 				minify: true,
 				sourcemap: true,
 				allowOverwrite: true,
-				format: "esm",
+				format: 'esm',
 				alias: {
-					"react-devtools-core": "react-devtools-core"
-				}
-			});
-			setIsSuccess(true);
+					'react-devtools-core': 'react-devtools-core',
+				},
+			})
+			setIsSuccess(true)
 			setTimeout(() => {
-				process.exit();
-			}, 1000);
-		})();
-	}, []);
+				process.exit()
+			}, 1000)
+		})()
+	}, [])
 
 	return (
 		<>
 			<Logger
-				type="info"
+				type='info'
 				message={
 					<Text>
-						<Loading variant="pipe" stop={isSuccess} />
+						<Loading variant='pipe' stop={isSuccess} />
 						<Text> Building... 🏗</Text>
 					</Text>
 				}
 			/>
-			{isSuccess && <Logger type="success" message={"Completed build ✨"} />}
+			{isSuccess && <Logger type='success' message={'Completed build ✨'} />}
 		</>
-	);
+	)
 }

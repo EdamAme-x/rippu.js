@@ -1,20 +1,20 @@
 {
-	"printWidth": 120,
-	"tabWidth": 4,
 	"useTabs": true,
-	"singleQuote": false,
-	"trailingComma": "none",
-	"semi": true,
 	"parser": "typescript",
 	"quoteProps": "as-needed",
-	"jsxSingleQuote": false,
 	"arrowParens": "avoid",
 	"bracketSpacing": true,
 	"bracketSameLine": true,
 	"proseWrap": "preserve",
+	"printWidth": 100,
+	"trailingComma": "es5",
+	"tabWidth": 2,
+	"semi": false,
+	"singleQuote": true,
+	"jsxSingleQuote": true,
+	"endOfLine": "lf",
 	"htmlWhitespaceSensitivity": "css",
 	"vueIndentScriptAndStyle": false,
-	"endOfLine": "lf",
 	"embeddedLanguageFormatting": "auto",
 	"singleAttributePerLine": false,
 	"importOrder": [
@@ -23,6 +23,12 @@
 		"",
 		"^[./]"
 	],
-	"importOrderParserPlugins": ["typescript", "jsx", "decorators-legacy"],
-	"plugins": ["@ianvs/prettier-plugin-sort-imports"]
+	"importOrderParserPlugins": [
+		"typescript",
+		"jsx",
+		"decorators-legacy"
+	],
+	"plugins": [
+		"@ianvs/prettier-plugin-sort-imports"
+	]
 }

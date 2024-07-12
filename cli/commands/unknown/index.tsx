@@ -1,15 +1,15 @@
-import { Box, Text } from "ink";
+import { Box, Text } from 'ink'
 
-import Logger from "../../../components/logger";
+import Logger from '../../../components/logger'
 
 const UnknownCommand = (props: { command: string; params: string[] }) => (
-	<Box flexDirection="column">
-		<Box flexDirection="column" alignItems="flex-start">
+	<Box flexDirection='column'>
+		<Box flexDirection='column' alignItems='flex-start'>
 			<Logger
-				type="error"
+				type='error'
 				message={
 					<Text>
-						Unknown command :{" "}
+						Unknown command :{' '}
 						<Text bold italic>
 							{props.command}
 						</Text>
@@ -17,11 +17,11 @@ const UnknownCommand = (props: { command: string; params: string[] }) => (
 				}
 			/>
 			<Logger
-				type="info"
+				type='info'
 				message={
 					<Text>
-						Try{" "}
-						<Text italic color={"gray"}>
+						Try{' '}
+						<Text italic color={'gray'}>
 							'rippu help'
 						</Text>
 					</Text>
@@ -29,6 +29,6 @@ const UnknownCommand = (props: { command: string; params: string[] }) => (
 			/>
 		</Box>
 	</Box>
-);
+)
 
-export default UnknownCommand;
+export default UnknownCommand
