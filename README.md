@@ -46,4 +46,4 @@ bun run format:fix
 ## Authors
 - Ame_x [@amex2189](https://x.com/amex2189)
 
-Thanks lipgloss-go and ink
+Thanks [lipgloss-go](https://github.com/charmbracelet/lipgloss) and [ink.js](https://github.com/y-lohse/inkjs) and [enogu](https://github.com/ryuapp/enogu)
