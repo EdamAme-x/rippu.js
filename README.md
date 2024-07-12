@@ -39,6 +39,9 @@ OR
 
 Please run before pushing, and add jsdoc (optional).
 
+The code is messy because it was created in a hurry now.  
+I am waiting for PR to put the types together, create common utils, etc!  
+
 See [loading.tsx](components/loading.tsx)
 
 ```bash

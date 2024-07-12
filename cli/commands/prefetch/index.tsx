@@ -18,6 +18,7 @@ const PrefetchCommand = (props: { command: string; params: string[] }) => {
 	}
 
 	const [isStop, setIsStop] = useState<boolean>(false)
+	// FIXME
 	const [component, setComponent] = useState<Awaited<ReturnType<typeof fetchComponent>>>({
 		ok: false,
 		error: 'Loading',

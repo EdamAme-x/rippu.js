@@ -1,5 +1,8 @@
 import { Text } from 'ink'
 import Logger from '../../../components/logger';
+import { useEffect, useState } from 'react';
+import { Loading } from '../../../components/loading';
+import { fetchComponent } from '../../utils/fetchComponent';
 
 const fileTypes = {
 	"jsx": "jsx",
@@ -18,7 +21,30 @@ const AddCommand = (props: { command: string; params: string[] }) => {
 		fileType = "tsx";
 	}
 
-	return <Text>{componentName} {putPath} {fileType}</Text>
+	// FIXME
+	const [addContainer, setAddContainer] = useState<{
+		status: "loading" | "error" | "complete",
+		data: any
+	}>({
+		status: "loading",
+		data: null
+	})
+
+	useEffect(() => {
+		;(async () => {
+			const component = await fetchComponent(componentName);
+
+			if (component.ok) {
+				
+			}
+		})()
+	}, [])
+
+	return <Text>{
+		addContainer.status === "loading" ? <>
+			<Text color="red"><Loading variant="point" /> Fetching...</Text>
+		</> : <>complete</>
+	}</Text>
 }
 
 export default AddCommand
