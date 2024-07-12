@@ -1,7 +1,7 @@
 {
   "name": "rippu",
   "description": "Components for building Beautiful TUI in Ink.js 💄",
-  "version": "0.1.8",
+  "version": "0.1.9",
   "license": "MIT",
   "keywords": [
     "ink.js",
