@@ -19,8 +19,11 @@ const PrefetchCommand = (props: { command: string; params: string[] }) => {
 
 	const [isStop, setIsStop] = useState<boolean>(false)
 	// FIXME
-	const [component, setComponent] = useState<Awaited<ReturnType<typeof fetchComponent>>>([false,
-		null, "Loading"])
+	const [component, setComponent] = useState<Awaited<ReturnType<typeof fetchComponent>>>([
+		false,
+		null,
+		'Loading',
+	])
 
 	useEffect(() => {
 		;(async () => {
@@ -58,7 +61,7 @@ const PrefetchCommand = (props: { command: string; params: string[] }) => {
 					<Text> </Text>
 					{component[1] ? (
 						Object.entries(component[1]).map(([key, value]) => {
-							const keys = key as keyof typeof component[1]
+							const keys = key as keyof (typeof component)[1]
 							switch (keys) {
 								case 'componentName':
 									return (

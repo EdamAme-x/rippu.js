@@ -43,7 +43,7 @@ const AddCommand = (props: { command: string; params: string[] }) => {
 				try {
 					if (component[1]) {
 						await fs.appendFile(putPath, component[1].source)
-					}else {
+					} else {
 						throw new Error()
 					}
 				} catch (_e) {
