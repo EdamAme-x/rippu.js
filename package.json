@@ -1,7 +1,7 @@
 {
   "name": "rippu",
   "description": "Components for building Beautiful TUI in Ink.js 💄",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "keywords": [
     "ink.js",
@@ -13,7 +13,7 @@
     "rippu.js",
     "rippu-js"
   ],
-  "module": "./dist/index.js",
+  "module": "./index.js",
   "type": "module",
   "scripts": {
     "build:start": "rimraf dist",
