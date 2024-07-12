@@ -31,7 +31,7 @@ const PrefetchCommand = (props: { command: string; params: string[] }) => {
 
 			setTimeout(() => {
 				process.exit(data.ok ? 0 : 1)
-			}, 1000)
+			}, 100)
 
 			setComponent(data)
 		})()

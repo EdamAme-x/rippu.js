@@ -1,3 +1,4 @@
+import * as fs from 'node:fs/promises'
 import { useEffect, useState } from 'react'
 import { Box, Text } from 'ink'
 
@@ -39,10 +40,19 @@ const AddCommand = (props: { command: string; params: string[] }) => {
 			const component = await fetchComponent(componentName)
 
 			if (component.ok) {
+				try {
+					await fs.appendFile(putPath, component.data?.source!)
+				} catch (_e) {
+					console.error('Already file exist or no dir.')
+					process.exit(1)
+				}
 				setAddContainer({
 					status: 'complete',
 					data: component.data,
 				})
+				setTimeout(() => {
+					process.exit(1)
+				}, 100)
 			} else {
 				setAddContainer({
 					status: 'error',
@@ -56,17 +66,22 @@ const AddCommand = (props: { command: string; params: string[] }) => {
 	}, [])
 
 	return addContainer.status === 'loading' ? (
-		<>
-			<Text color='red'>
-				<Loading variant='point' /> Fetching...
-			</Text>
-		</>
+		<Text color='red'>
+			<Loading variant='point' /> Fetching...
+		</Text>
 	) : addContainer.status === 'complete' ? (
-		<></>
+		<Box flexDirection='column'>
+			<Text color='green'>
+				<Loading variant='point' stop /> Complete fetching.
+			</Text>
+			<Text> </Text>
+			<Logger type='success' message={`Added '${componentName}' component`} />
+			<Logger type='success' message={`Created file at ${putPath}`} />
+		</Box>
 	) : (
 		<Box flexDirection='column'>
-			<Text color='red'>
-				<Loading variant='point' stop /> Failed fetching...
+			<Text color='yellow'>
+				<Loading variant='point' stop /> Failed fetching!
 			</Text>
 			<Logger type='warn' message={'Component name is wrong!'} />
 		</Box>
