@@ -41,17 +41,22 @@ function Build() {
 			});
 			setIsSuccess(true);
 			setTimeout(() => {
-				process.exit()
-			}, 1000)
+				process.exit();
+			}, 1000);
 		})();
 	}, []);
 
 	return (
 		<>
-			<Text>
-				<Loading variant="pipe" stop={isSuccess} />
-				<Text> Building... 🏗</Text>
-			</Text>
+			<Logger
+				type="info"
+				message={
+					<Text>
+						<Loading variant="pipe" stop={isSuccess} />
+						<Text> Building... 🏗</Text>
+					</Text>
+				}
+			/>
 			{isSuccess && <Logger type="success" message={"Completed build ✨"} />}
 		</>
 	);

@@ -1,15 +1,15 @@
-import { Text } from 'ink'
+import { Text } from "ink";
 
 const logMap = {
-	info: 'green',
-	warn: 'yellow',
-	error: 'red',
-	success: 'green',
-	debug: 'blue',
-	trace: 'magenta'
-} as const satisfies Record<string, string>
+	info: "blue",
+	warn: "yellow",
+	error: "red",
+	success: "green",
+	debug: "cyan",
+	trace: "magenta"
+} as const satisfies Record<string, string>;
 
-const maxLogLevelLength = Object.keys(logMap).reduce((max, type) => Math.max(max, type.length), 0)
+const maxLogLevelLength = Object.keys(logMap).reduce((max, type) => Math.max(max, type.length), 0);
 
 /**
  * Renders a log message with specified type, message, color, and newline settings.
@@ -23,7 +23,7 @@ const maxLogLevelLength = Object.keys(logMap).reduce((max, type) => Math.max(max
 export default function Logger({
 	type,
 	message,
-	color = 'default',
+	color = "default",
 	newline = false
 }: {
 	type: keyof typeof logMap;
@@ -33,23 +33,23 @@ export default function Logger({
 }) {
 	return (
 		<>
-			<Text color={color !== 'default' ? logMap[type] : undefined}>
+			<Text color={color !== "default" ? logMap[type] : undefined}>
 				<Text bold backgroundColor={logMap[type]}>
-					{' '}
-					{type.toLowerCase()}{' '}
+					{" "}
+					{type.toLowerCase()}{" "}
 				</Text>
-				{typeof message === 'string' ? (
-					' '.repeat(Math.max(maxLogLevelLength - type.length, 1)) + message
+				{typeof message === "string" ? (
+					" ".repeat(Math.max(maxLogLevelLength - type.length, 1)) + message
 				) : (
 					<>
-						{' '.repeat(Math.max(maxLogLevelLength - type.length, 1))}
+						{" ".repeat(Math.max(maxLogLevelLength - type.length, 1))}
 						{message}
 					</>
 				)}
 			</Text>
 			{newline && <Text> </Text>}
 		</>
-	)
+	);
 }
 
 // #rippu:Logger:A Log Message Component
