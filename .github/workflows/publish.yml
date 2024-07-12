@@ -23,21 +23,18 @@ jobs:
       - name: Checkout 🔔
         uses: actions/checkout@v4
 
-      - name: Setup Node.js ${{ matrix.node-version }} 🔧
-        uses: actions/setup-node@v4
-        with:
-          node-version: ${{ matrix.node-version }}
-          registry-url: 'https://registry.npmjs.org'
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v1
 
       - name: Install dependencies 🧹
-        run: npm i --legacy-peer-deps
+        run: bun i --legacy-peer-deps
         # using bun
 
       - name: Build 🔨
-        run: npm run build
+        run: bun run build
 
       - name: Publish 🎁
-        run: npm publish --provenance --access public
+        run: bun publish --provenance --access public
         working-directory: dist
         env:
           NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
