@@ -26,8 +26,6 @@ const commandMap = {
 	}
 >
 
-const maxCommandLength = Object.keys(commandMap).reduce((max, command) => Math.max(max, command.length), 0)
-
 const HelpCommand = (_props: { command: string; params: string[] }) => (
 	<Box flexDirection="column">
 		<Box flexDirection="column" alignItems="flex-start">
