@@ -8,7 +8,9 @@ Fast, feature-rich, user-friendly, and above all, upscale UI ✨
 Supports: Node.js, Deno, Bun and more :heart:
 
 Accessible and customizable components that you can copy and paste into your apps. Free. Open Source.  
-**Use this to build your own component library.**
+**Use this to build your own component library.**  
+
+#### [**Docs 📖**](https://github.com/EdamAme-x/rippu.js/wiki)
 
 ## What is this
 
