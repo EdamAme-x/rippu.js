@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { gray } from 'enogu'
-import { Box, Text } from 'ink'
+import { gray, blue, red, green, magenta, white } from 'enogu'
+import { Box, Newline, Text } from 'ink'
 
 import { Loading } from '../../../components/loading'
 import Logger from '../../../components/logger'
@@ -28,11 +28,12 @@ const PrefetchCommand = (props: { command: string; params: string[] }) => {
 		;(async () => {
 			const data = await fetchComponent(componentName)
 
+			setTimeout(() => {
+				process.exit(0)
+			}, 1000)
+
 			setComponent(data)
 		})()
-		setTimeout(() => {
-			process.exit(0)
-		}, 1000)
 	}, [])
 
 	useEffect(() => {
@@ -56,20 +57,21 @@ const PrefetchCommand = (props: { command: string; params: string[] }) => {
 					<Text bold color='green'>
 						<Loading variant='point' stop={isStop} /> Prefetched "{componentName}"
 					</Text>
+					<Text>{" "}</Text>
 					{component.data ? (
 						Object.entries(component.data).map(([key, value]) => {
 							const keys = key as keyof typeof component.data
 							switch (keys) {
 								case 'componentName':
-									return <Text key={key}>Component Name: {value}</Text>
+									return <Text color="gray" key={key}>Component Name: {blue(value)}</Text>
 								case 'componentUrl':
-									return <Text key={key}>Component Raw URL: {value}</Text>
+									return <Text color="gray" key={key}>Component Raw URL: {magenta(value)}</Text>
 								case 'title':
-									return <Text key={key}>Title: {value}</Text>
+									return <Text color="gray" key={key}>Title: {green(value)}</Text>
 								case 'description':
-									return <Text key={key}>Description: {value}</Text>
+									return <Text color="gray" key={key}>Description: {red(value)}</Text>
 								case 'source':
-									return <Text key={key}>Hash: {simpleHash(value)}</Text>
+									return <Text color="gray" key={key}>Hash: {white(simpleHash(value))}</Text>
 							}
 						})
 					) : (
