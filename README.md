@@ -41,6 +41,7 @@ See [loading.tsx](components/loading.tsx)
 
 ```bash
 bun run format:fix
+bun run lint:fix
 ```
 
 ## Authors
