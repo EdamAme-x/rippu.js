@@ -30,7 +30,7 @@ const PrefetchCommand = (props: { command: string; params: string[] }) => {
 			const data = await fetchComponent(componentName)
 
 			setTimeout(() => {
-				process.exit(0)
+				process.exit(data.ok ? 0 : 1)
 			}, 1000)
 
 			setComponent(data)
@@ -88,11 +88,11 @@ const PrefetchCommand = (props: { command: string; params: string[] }) => {
 										</Text>
 									)
 								case 'deps':
-										return (
-											<Text color='gray' key={key}>
-												Deps: {yellow(value)}
-											</Text>
-										)
+									return (
+										<Text color='gray' key={key}>
+											Deps: {yellow(value)}
+										</Text>
+									)
 								case 'source':
 									return (
 										<Text color='gray' key={key}>

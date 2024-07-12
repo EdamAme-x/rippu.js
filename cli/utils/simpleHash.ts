@@ -1,5 +1,5 @@
 export function simpleHash(str: string): string {
-	str = str.split("").reverse().join("")
+	str = str.split('').reverse().join('')
 	let hash = 0
 	for (let i = 0; i < str.length; i++) {
 		const char = str.charCodeAt(i)

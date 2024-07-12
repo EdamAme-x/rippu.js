@@ -5,10 +5,10 @@ export async function fetchComponent(componentName: string) {
 
 	const response = await fetch(componentUrl, {
 		headers: {
-			"User-Agent": "Rippu.js (https://github.com/EdamAme-x/rippu.js)",
-			"Cache-Control": "no-store"
+			'User-Agent': 'Rippu.js (https://github.com/EdamAme-x/rippu.js)',
+			'Cache-Control': 'no-store',
 		},
-		method: "GET"
+		method: 'GET',
 	})
 
 	if (!response.ok) {

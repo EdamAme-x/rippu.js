@@ -1,50 +1,76 @@
-import { Text } from 'ink'
-import Logger from '../../../components/logger';
-import { useEffect, useState } from 'react';
-import { Loading } from '../../../components/loading';
-import { fetchComponent } from '../../utils/fetchComponent';
+import { useEffect, useState } from 'react'
+import { Box, Text } from 'ink'
+
+import { Loading } from '../../../components/loading'
+import Logger from '../../../components/logger'
+import { fetchComponent } from '../../utils/fetchComponent'
 
 const fileTypes = {
-	"jsx": "jsx",
-	"tsx": "tsx"
+	jsx: 'jsx',
+	tsx: 'tsx',
 }
 
 const AddCommand = (props: { command: string; params: string[] }) => {
 	if (props.params.length < 1) {
-		return <Logger type="error" message={"Not enough arguments"} />
+		return <Logger type='error' message={'Not enough arguments'} />
 	}
-	const componentName = props.params[0].toLowerCase();
-	const putPath = props.params[1] ?? `./${componentName}.tsx`;
-	let fileType = putPath.split(".").pop() ?? "tsx";
+	const componentName = props.params[0].toLowerCase()
+	if (/[a-z1-9-_]+/.test(componentName) === false) {
+		return <Logger type='error' message='Invalid component name' />
+	}
+	const putPath = (props.params[1] ?? `./${componentName}.tsx`).replace(/\\/g, '/')
+	let fileType = putPath.split('.').pop() ?? 'tsx'
 
 	if (!(fileType in fileTypes)) {
-		fileType = "tsx";
+		fileType = 'tsx'
 	}
 
 	// FIXME
 	const [addContainer, setAddContainer] = useState<{
-		status: "loading" | "error" | "complete",
+		status: 'loading' | 'error' | 'complete'
 		data: any
 	}>({
-		status: "loading",
-		data: null
+		status: 'loading',
+		data: null,
 	})
 
 	useEffect(() => {
 		;(async () => {
-			const component = await fetchComponent(componentName);
+			const component = await fetchComponent(componentName)
 
 			if (component.ok) {
-				
+				setAddContainer({
+					status: 'complete',
+					data: component.data,
+				})
+			} else {
+				setAddContainer({
+					status: 'error',
+					data: component.error,
+				})
+				setTimeout(() => {
+					process.exit(1)
+				}, 100)
 			}
 		})()
 	}, [])
 
-	return <Text>{
-		addContainer.status === "loading" ? <>
-			<Text color="red"><Loading variant="point" /> Fetching...</Text>
-		</> : <>complete</>
-	}</Text>
+	return addContainer.status === 'loading' ? (
+		<>
+			<Text color='red'>
+				<Loading variant='point' /> Fetching...
+			</Text>
+		</>
+	) : addContainer.status === 'complete' ? (
+		<></>
+	) : (
+		<Box flexDirection='column'>
+			<Text color='red'>
+				<Loading variant='point' stop /> Failed fetching...
+			</Text>
+			<Logger type='warn' message={'Component name is wrong!'} />
+		</Box>
+	)
 }
 
 export default AddCommand

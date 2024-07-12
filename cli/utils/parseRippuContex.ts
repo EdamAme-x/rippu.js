@@ -12,7 +12,7 @@ export function parseRippuContext(source: string): {
 			return {
 				title: title.trim(),
 				description: description.trim(),
-				deps: deps.trim()
+				deps: deps.trim(),
 			}
 		}
 	}
@@ -20,6 +20,6 @@ export function parseRippuContext(source: string): {
 	return {
 		title: 'Unknown',
 		description: 'Not includes #rippu context',
-		deps: ''
+		deps: '',
 	}
 }
