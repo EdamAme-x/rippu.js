@@ -15,7 +15,7 @@ export async function fetchComponent(componentName: string) {
 
 	const source = await response.text()
 
-	const { title, description } = parseRippuContext(source)
+	const { title, description, deps } = parseRippuContext(source)
 
 	return {
 		ok: true,
@@ -23,6 +23,7 @@ export async function fetchComponent(componentName: string) {
 		data: {
 			title,
 			description,
+			deps,
 			source,
 			componentName,
 			componentUrl,

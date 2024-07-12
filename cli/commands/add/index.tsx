@@ -18,7 +18,7 @@ const AddCommand = (props: { command: string; params: string[] }) => {
 		fileType = "tsx";
 	}
 
-	return <Text>WIP</Text>
+	return <Text>{componentName} {putPath} {fileType}</Text>
 }
 
 export default AddCommand

@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { blue, gray, green, magenta, red, white } from 'enogu'
+import { blue, gray, green, magenta, red, white, yellow } from 'enogu'
 import { Box, Newline, Text } from 'ink'
 
 import { Loading } from '../../../components/loading'
@@ -86,6 +86,12 @@ const PrefetchCommand = (props: { command: string; params: string[] }) => {
 											Description: {red(value)}
 										</Text>
 									)
+								case 'deps':
+										return (
+											<Text color='gray' key={key}>
+												Deps: {yellow(value)}
+											</Text>
+										)
 								case 'source':
 									return (
 										<Text color='gray' key={key}>

@@ -52,4 +52,4 @@ export default function Logger({
 	)
 }
 
-// #rippu:Logger:A Log Message Component
+// #rippu:Logger:A Log Message Component:ink
