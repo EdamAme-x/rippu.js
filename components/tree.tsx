@@ -1,5 +1,5 @@
 import * as enogu from 'enogu'
-import { render, Text } from 'ink'
+import { Text } from 'ink'
 
 type Tree = {
 	text: string | JSX.Element
@@ -157,37 +157,5 @@ function Branch({
 		</>
 	)
 }
-
-render(
-	<Tree
-		tree={[
-			{
-				text: 'child',
-				children: [
-					{
-						text: 'grandchild',
-						children: [
-							{
-								text: 'great grandchild',
-								children: [
-									{
-										text: 'great great grandchild',
-									},
-								],
-							},
-						],
-					},
-					{
-						text: 'grandchild 2',
-					},
-				],
-			},
-			{
-				text: 'child 2',
-			},
-		]}
-		color={['red', 'green', 'blue']}
-	/>
-)
 
 // #rippu:Tree:A Tree Component:ink,enogu
