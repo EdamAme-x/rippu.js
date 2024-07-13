@@ -62,7 +62,7 @@ export function Tree({
 }: {
 	tree: TreeRoot
 	bold?: boolean
-	color?: string
+	color?: string | string[]
 	space?: number
 	length?: number
 	between?: number
@@ -74,11 +74,11 @@ export function Tree({
 					key={index}
 					tree={branch}
 					bold={bold}
-					color={color}
+					color={Array.isArray(color) ? color : [color]}
 					space={space}
 					length={length}
 					isLast={index === tree.length - 1}
-					between={between}
+					between={between + 1}
 				/>
 			))}
 		</>
@@ -87,31 +87,42 @@ export function Tree({
 
 function Branch({
 	tree,
-	bold = false,
-	color = 'white',
+	bold,
+	color,
 	space,
 	length,
 	between,
 	depth = 0,
 	isLast,
+	parentsIsLast = [],
 }: {
 	tree: Tree
 	bold: boolean
-	color: string
+	color: string[]
 	space: number
 	length: number
 	between: number
 	depth?: number
 	isLast: boolean
+	parentsIsLast?: boolean[]
 }) {
+	const colorIndex = depth % color.length
+
+	const isNeedPipe = (index: number) => {
+		return !(isLast && index <= depth) || !parentsIsLast[index]
+	}
+
 	return (
 		<>
-			{Array.from({ length: between }).map((_, i) => (
-				<Text key={i}>{(getPipe('vertical', bold) + ' '.repeat(length)).repeat(depth + 1)}</Text>
-			))}
 			<Text>
-				<Text color={color}>{(getPipe('vertical', bold) + ' '.repeat(length)).repeat(depth)}</Text>
-				<Text color={color}>
+				{Array.from({ length: between }).map((_, indexDepth) => (
+					<Text key={indexDepth}>
+						{(
+							(isNeedPipe(indexDepth) ? getPipe('vertical', bold) : ' ') + ' '.repeat(length)
+						).repeat(depth)}
+					</Text>
+				))}
+				<Text color={color[colorIndex] === 'default' ? undefined : color[colorIndex]}>
 					{isLast
 						? getPipe('halfVerticalAndHorizontal', bold)
 						: getPipe('verticalAndHorizontal', bold)}
@@ -127,12 +138,13 @@ function Branch({
 							tree={branch}
 							bold={bold}
 							color={color}
-							space={space + 1}
+							space={space}
 							length={length}
 							between={between}
 							depth={depth + 1}
 							key={index}
 							isLast={tree.children ? index === tree.children.length - 1 : false}
+							parentsIsLast={parentsIsLast.concat(isLast)}
 						/>
 					))
 				: null}
