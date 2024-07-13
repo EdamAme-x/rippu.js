@@ -1,8 +1,140 @@
+import { render, Text } from 'ink'
+
 type Tree = {
-	name: string
+	text: string | JSX.Element
 	children?: Tree[]
 }
 
-export function Tree({ tree, bold = false }: { tree: Tree; bold?: boolean }) {
-	return <div></div>
+type TreeRoot = Tree[]
+
+const TreePipes = {
+	vertical: {
+		regular: '│',
+		bold: '┃',
+	},
+	verticalAndHorizontal: {
+		regular: '├',
+		bold: '┣',
+	},
+	halfVerticalAndHorizontal: {
+		regular: '└',
+		bold: '┗',
+	},
+	horizontal: {
+		regular: '─',
+		bold: '━',
+	},
+	horizontalAndVertical: {
+		regular: '┬',
+		bold: '┳',
+	},
+} as const satisfies Record<string, Record<'regular' | 'bold', string>>
+
+function getPipe(
+	type:
+		| 'vertical'
+		| 'verticalAndHorizontal'
+		| 'halfVerticalAndHorizontal'
+		| 'horizontal'
+		| 'horizontalAndVertical',
+	bold: boolean
+) {
+	return TreePipes[type][bold ? 'bold' : 'regular']
 }
+
+export function Tree({
+	tree,
+	bold = false,
+	color = 'default',
+	space = 1,
+	length = 1,
+}: {
+	tree: TreeRoot
+	bold?: boolean
+	color?: string
+	space?: number
+	length?: number
+}) {
+	return (
+		<>
+			{tree.map((branch, index) => (
+				<Branch key={index} tree={branch} bold={bold} color={color} space={space} length={length} isLast={index === tree.length - 1} />
+			))}
+		</>
+	)
+}
+
+function Branch({
+	tree,
+	bold = false,
+	color = 'white',
+	space,
+	length,
+	depth = 0,
+    isLast
+}: {
+	tree: Tree
+	bold: boolean
+	color: string
+	space: number
+	length: number
+	depth?: number
+    isLast: boolean
+}) {
+	return (
+		<>
+			<Text>
+				<Text color={color}>{(getPipe('vertical', bold) + ' '.repeat(length)).repeat(depth)}</Text>
+				<Text color={color}>
+					{isLast ? getPipe('halfVerticalAndHorizontal', bold) :  getPipe('verticalAndHorizontal', bold)}
+					{getPipe('horizontal', bold).repeat(length)}
+					{tree.children ? getPipe('horizontalAndVertical', bold) : getPipe('horizontal', bold)}
+					{getPipe('horizontal', bold)}
+				</Text>
+				{' '.repeat(space) + tree.text}
+			</Text>
+			{tree.children
+				? tree.children.map((branch, index) => (
+						<Branch
+							tree={branch}
+							bold={bold}
+							color={color}
+							space={space + 1}
+							length={length}
+							depth={depth + 1}
+							key={index}
+                            isLast={tree.children ? index === tree.children.length - 1 : false}
+						/>
+					))
+				: null}
+		</>
+	)
+}
+
+render(
+	<Tree
+		tree={[
+			{
+				text: 'a',
+				children: [
+					{
+						text: 'b',
+						children: [
+							{
+								text: 'c',
+							},
+						],
+					},
+					{
+						text: 'd',
+					},
+				],
+			},
+			{
+				text: 'e',
+			},
+		]}
+	/>
+)
+
+// #rippu:Tree:A Tree Component:ink

@@ -33,7 +33,7 @@ export default function Logger({
 }) {
 	return (
 		<>
-			<Text color={color !== 'default' ? logMap[type] : undefined}>
+			<Text color={color === 'default' ? undefined : logMap[type]}>
 				<Text bold backgroundColor={logMap[type]}>
 					{' '}
 					{type.toLowerCase()}{' '}

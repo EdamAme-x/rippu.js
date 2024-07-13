@@ -20,8 +20,8 @@
     "build:middle": "bun run ./build.tsx",
     "build:end": "cp ./package.json ./dist/package.json && cp ./README.md ./dist/README.md && cp ./node_modules/yoga-wasm-web/dist/yoga.wasm ./dist/yoga.wasm",
     "build": "bun run build:start && bun run build:middle  && bun run build:end",
-    "format": "prettier --check './**/*.{ts,tsx,js,jsx}'",
-    "format:fix": "prettier --write './**/*.{ts,tsx,js,jsx}'",
+    "format": "prettier --check './**/*.{ts,tsx}'",
+    "format:fix": "prettier --write './**/*.{ts,tsx}'",
     "lint": "eslint --ext js,ts,jsx,tsx cli components",
     "lint:fix": "eslint --ext js,ts,jsx,tsx cli components --fix"
   },
