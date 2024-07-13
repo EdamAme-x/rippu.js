@@ -6,7 +6,7 @@ Rippu - [リップ] means lip-gloss💄 in Japanese.
 Fast, feature-rich, user-friendly, and upscale UI ✨
 
 Supports: Node.js, Deno, Bun and more :heart:
-<img src="https://github.com/user-attachments/assets/c7572d56-a279-4bbc-b2d3-b17af70c6ad5" alt="icon" />
+<img src="https://github.com/user-attachments/assets/c7572d56-a279-4bbc-b2d3-b17af70c6ad5" alt="icon" width="200" />
 
 Accessible and customizable components that you can copy and paste into your apps. Free. Open Source.  
 **Use this to build your own component library.**  
