@@ -67,20 +67,25 @@ const snsMap = [
 
 export function Copyright({
 	text,
+	title = 'Copyright',
 	color = 'default',
 	sns,
 }: {
 	text: string | JSX.Element
+	title?: string
 	color?: string
 	sns?: {
 		[name in (typeof snsMap)[number]['name']]?: string
 	}
 }) {
 	return (
-		<Box flexDirection='column' borderStyle={'round'} paddingX={1}>
+		<Box flexDirection='column' flexGrow={1} paddingBottom={1} borderStyle={'round'} paddingX={1}>
+			<Box marginTop={-1} paddingBottom={1}>
+				<Text> {title} </Text>
+			</Box>
 			<Text color={color === 'default' ? undefined : color}>{text}</Text>
 			{sns && (
-				<Box flexDirection='column' paddingTop={1}>
+				<Box flexDirection='column'>
 					{Object.entries(sns).map(([key, value]) => {
 						const snsBase = snsMap.find(sns => sns.name === key)
 						return (
