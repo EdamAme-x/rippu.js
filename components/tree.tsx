@@ -1,4 +1,5 @@
-import { Text } from 'ink'
+import * as enogu from 'enogu'
+import { render, Text } from 'ink'
 
 type Tree = {
 	text: string | JSX.Element
@@ -106,10 +107,10 @@ function Branch({
 	isLast: boolean
 	parentsIsLast?: boolean[]
 }) {
-	const colorIndex = depth % color.length
+	const colorIndex = depth > color.length - 1 ? color.length - 1 : depth
 
 	const isNeedPipe = (index: number) => {
-		return !(isLast && index <= depth) || !parentsIsLast[index]
+		return !parentsIsLast[index]
 	}
 
 	return (
@@ -117,9 +118,14 @@ function Branch({
 			<Text>
 				{Array.from({ length: between }).map((_, indexDepth) => (
 					<Text key={indexDepth}>
-						{(
-							(isNeedPipe(indexDepth) ? getPipe('vertical', bold) : ' ') + ' '.repeat(length)
-						).repeat(depth)}
+						{Array.from({ length: depth }).map((_, index) => {
+							const key = color[index]
+							const paint = enogu[key as keyof typeof enogu] ?? enogu.reset
+
+							return paint(
+								(isNeedPipe(index) ? getPipe('vertical', bold) : ' ') + ' '.repeat(length)
+							)
+						})}
 					</Text>
 				))}
 				<Text color={color[colorIndex] === 'default' ? undefined : color[colorIndex]}>
@@ -152,4 +158,36 @@ function Branch({
 	)
 }
 
-// #rippu:Tree:A Tree Component:ink
+render(
+	<Tree
+		tree={[
+			{
+				text: 'child',
+				children: [
+					{
+						text: 'grandchild',
+						children: [
+							{
+								text: 'great grandchild',
+								children: [
+									{
+										text: 'great great grandchild',
+									},
+								],
+							},
+						],
+					},
+					{
+						text: 'grandchild 2',
+					},
+				],
+			},
+			{
+				text: 'child 2',
+			},
+		]}
+		color={['red', 'green', 'blue']}
+	/>
+)
+
+// #rippu:Tree:A Tree Component:ink,enogu
