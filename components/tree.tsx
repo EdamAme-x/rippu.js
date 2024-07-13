@@ -120,7 +120,8 @@ function Branch({
 					<Text key={indexDepth}>
 						{Array.from({ length: depth }).map((_, index) => {
 							const key = color[index]
-							const paint = enogu[key as keyof typeof enogu] ?? enogu.reset
+
+							const paint = key in enogu ? enogu[key as keyof typeof enogu] : enogu.reset
 
 							return paint(
 								(isNeedPipe(index) ? getPipe('vertical', bold) : ' ') + ' '.repeat(length)
