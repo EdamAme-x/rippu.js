@@ -34,9 +34,11 @@
     "url": "https://github.com/EdamAme-x/rippu.js/issues"
   },
   "repository": {
-    "url": "https://github.com/EdamAme-x/rippu.js"
+    "url": "git+https://github.com/EdamAme-x/rippu.js.git"
   },
-  "bin": "./index.js",
+  "bin": {
+    "rippu": "./index.js"
+  },
   "devDependencies": {
     "@hono/eslint-config": "^0.0.6",
     "@ianvs/prettier-plugin-sort-imports": "^4.3.0",
